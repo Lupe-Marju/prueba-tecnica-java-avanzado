@@ -2,6 +2,7 @@ import entities.Vuelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import static utils.Filtro.filtrar;
 
@@ -21,10 +22,10 @@ public class Main {
         vuelos.add(new Vuelo("Vueling", LocalDate.of(2025, 8, 1), LocalDate.of(2025, 8, 1), 10, "Paris", "Barcelona", "VU4251"));
 
         // Fechas desde las cuales seleccionar las vuelos
-        LocalDate fechaDesde = null;
-        LocalDate fechaHasta = null;
+        Optional<LocalDate> fechaDesde = Optional.ofNullable(null);
+        Optional<LocalDate> fechaHasta = Optional.ofNullable(LocalDate.of(2025, 8, 20));
 
-        // Llamado a la funcion filtrar en un try/catch por si sucede un error imprevisto
+        //Esta en un try/catch por si sucede alguna exception para que no se rompa el programa
         try {
             filtrar(vuelos, fechaDesde, fechaHasta);
         } catch (Exception e) {
